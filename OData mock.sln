@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34009.444
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OData mock", "OData mock\OData mock.csproj", "{E4ADFE88-1A4E-49C4-A0F8-7F6DB16858A2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MockClient", "MockClient\MockClient.csproj", "{154E3559-8B9B-47B9-808F-560EC167A90C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ODataClient", "ODataClient\ODataClient.csproj", "{8281B72A-9516-4130-8684-E7F0F4C96234}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ODataMockAPI", "ODataMockAPI\ODataMockAPI.csproj", "{4BEE9AC6-DA60-476F-81F1-5634661F3879}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ODataClientWithClientSideLimiter", "ODataClientWithClientSideLimiter\ODataClientWithClientSideLimiter.csproj", "{CE5EC3AD-4CA1-4366-8B00-3ABB6946CF45}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simple.OData.Client.Core", "..\Simple.OData.Client\src\Simple.OData.Client.Core\Simple.OData.Client.Core.csproj", "{E6AFD6FD-D45C-435B-A4DB-DE9D40983C36}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E4ADFE88-1A4E-49C4-A0F8-7F6DB16858A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4ADFE88-1A4E-49C4-A0F8-7F6DB16858A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4ADFE88-1A4E-49C4-A0F8-7F6DB16858A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4ADFE88-1A4E-49C4-A0F8-7F6DB16858A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{154E3559-8B9B-47B9-808F-560EC167A90C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{154E3559-8B9B-47B9-808F-560EC167A90C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{154E3559-8B9B-47B9-808F-560EC167A90C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{154E3559-8B9B-47B9-808F-560EC167A90C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8281B72A-9516-4130-8684-E7F0F4C96234}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8281B72A-9516-4130-8684-E7F0F4C96234}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8281B72A-9516-4130-8684-E7F0F4C96234}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8281B72A-9516-4130-8684-E7F0F4C96234}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BEE9AC6-DA60-476F-81F1-5634661F3879}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BEE9AC6-DA60-476F-81F1-5634661F3879}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BEE9AC6-DA60-476F-81F1-5634661F3879}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BEE9AC6-DA60-476F-81F1-5634661F3879}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE5EC3AD-4CA1-4366-8B00-3ABB6946CF45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE5EC3AD-4CA1-4366-8B00-3ABB6946CF45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE5EC3AD-4CA1-4366-8B00-3ABB6946CF45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE5EC3AD-4CA1-4366-8B00-3ABB6946CF45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6AFD6FD-D45C-435B-A4DB-DE9D40983C36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6AFD6FD-D45C-435B-A4DB-DE9D40983C36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6AFD6FD-D45C-435B-A4DB-DE9D40983C36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6AFD6FD-D45C-435B-A4DB-DE9D40983C36}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DA3E94FF-E433-4914-ACF5-65CF9136EFA5}
+	EndGlobalSection
+EndGlobal

@@ -1,4 +1,5 @@
-﻿using Simple.OData.Client;
+﻿
+using Simple.OData.Client;
 
 internal class Program
 {
@@ -15,14 +16,14 @@ internal class Program
         PayloadFormat = ODataPayloadFormat.Json,
         RenewHttpConnection = true,
     };
-    static IODataClient client;
+    static IODataClient _client;
 
 
     static async Task Main(string[] args)
     {
         int waitTime = 0;
         //_settings.AfterResponse += delegate (HttpResponseMessage message) { Console.WriteLine(message.StatusCode); };
-        client = new ODataClient(_settings);
+        _client = new ODataClient(_settings);
         if (args.Length > 0)
         {
             waitTime = Int32.Parse(args[0]);
@@ -123,7 +124,7 @@ internal class Program
         {
 
             Interlocked.Increment(ref _numberOfRequests);
-            var packages = await client.For<Odatamock>().Key(waitTime).FindEntriesAsync();
+            var packages = await _client.For<Odatamock>().Key(waitTime).FindEntriesAsync();
             //Thread.Sleep(500);
 
             Interlocked.Increment(ref _taskNumber);

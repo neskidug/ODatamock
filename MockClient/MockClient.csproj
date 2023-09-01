@@ -9,10 +9,12 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.9" />
+    <PackageReference Include="Microsoft.OData.Core" Version="7.17.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Simple.OData.Client\src\Simple.OData.Client.Core\Simple.OData.Client.Core.csproj" />
+    <ProjectReference Include="..\..\Simple.OData.Client\src\Simple.OData.Client.V4.Adapter\Simple.OData.Client.V4.Adapter.csproj" />
     <ProjectReference Include="..\OData mock\OData mock.csproj" />
   </ItemGroup>
 

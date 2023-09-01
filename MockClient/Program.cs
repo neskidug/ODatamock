@@ -1,63 +1,88 @@
-﻿public class Program
+﻿using Simple.OData.Client;
+
+public class Program
 {
-    static HttpClient client;
-    private static void Main(string[] args)
+    static int _taskNumber = 0;
+    static ODataClientSettings _settings = new ODataClientSettings()
     {
-        MakeThreads();
+        BaseUri = new Uri("http://localhost:81/odata/"),
+        IgnoreResourceNotFoundException = true,
+        IgnoreUnmappedProperties = true,
+        //RequestTimeout = TimeSpan.FromMilliseconds(2000),
+        PayloadFormat = ODataPayloadFormat.Json,
+        RenewHttpConnection = true,
+    };
+    static IODataClient client;
 
+
+    static async Task Main(string[] args)
+    {
+        int waitTime = 0;
+        //_settings.AfterResponse += delegate (HttpResponseMessage message) { Console.WriteLine(message.StatusCode); };
+        client = new ODataClient(_settings);
+        if (args.Length > 0)
+        {
+            waitTime = Int32.Parse(args[0]);
+        }
+        MakeThreads(waitTime);
 
     }
-    static async Task GetMockODataAsync()
+
+    static void MakeThreads(int waitTime)
     {
+        int numTasks = 500;
+        int numTasksWithWaiting = 100;
 
-
-        client = new HttpClient();
-        try
-        {
-            HttpResponseMessage response = await client.GetAsync("http://localhost:5000/odata/Odatamock");
-            Console.WriteLine($"{response.StatusCode}");
-            if (response.IsSuccessStatusCode)
-            {
-                string GetMockOData = await response.Content.ReadAsStringAsync();
-                Console.WriteLine($"{response.StatusCode}{GetMockOData}");
-            }
-            else
-            {
-                Console.WriteLine("Error");
-            }
-
-        }
-        catch (AggregateException aex)
-        {
-            Console.WriteLine("Handle Remaining Exceptions");
-            foreach (Exception ex in aex.InnerExceptions)
-            {
-                Console.WriteLine("Begynder her");
-                Console.WriteLine("{0}: {1}", ex.GetType().Name, ex.Message);
-            }
-        }
-    }
-
-    static void MakeThreads()
-    {
-        int numThreads = 100; // Change this to the number of threads you want to create
-
-
-        Thread[] threads = new Thread[numThreads];
         List<Task> tasks = new List<Task>();
         int f = 0;
-        for (int i = 0; i < numThreads; i++)
+        for (int v = 0; v < numTasksWithWaiting; v++)
         {
-            //threads[i] = new Thread(GetMockODataAsync);
-            var task = GetMockODataAsync();
+            var task = Task.Run(() => GetMockODataAsync(waitTime));
             tasks.Add(task);
-            //threads[i].Start();
-
             f++;
         }
-        Console.WriteLine(f);
+        for (int i = 0; i < numTasks; i++)
+        {
+            var task = Task.Run(() => GetMockODataAsync(0));
+            tasks.Add(task);
+            f++;
+        }
+
+        Console.WriteLine($"Number of threads: {f}");
 
         Task.WaitAll(tasks.ToArray());
+
+        Console.WriteLine("Main thread exits.");
+    }
+    static async Task GetMockODataAsync(int waitTime)
+    {
+        try
+        {
+            var packages = await client.For<Odatamock>().Key(waitTime).FindEntriesAsync();
+            Interlocked.Increment(ref _taskNumber);
+            foreach (var package in packages)
+            {
+                Console.WriteLine($"Request number: {_taskNumber}   Name: {package.Name}");
+            };
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Exception: " + ex.Message);
+        }
+    }
+
+    public class Odatamock
+    {
+
+        public int Id { get; set; }
+        public string? Name { get; set; }
+        public Odatamock(int id, string name)
+        {
+            this.Id = id;
+            this.Name = name;
+        }
+        public Odatamock() { }
+
     }
 }
 
